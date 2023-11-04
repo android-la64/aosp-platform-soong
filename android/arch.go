@@ -44,6 +44,9 @@ module {
         x86_64: {
             // Host or device variants with x86_64 architecture
         },
+        loongarch64: {
+            // Host or device variants with loongarch64 architecture
+        },
     },
     multilib: {
         lib32: {
@@ -123,7 +126,7 @@ func (a Arch) String() string {
 // well as the "common" architecture used for modules that support multiple architectures, for
 // example Java modules.
 type ArchType struct {
-	// Name is the name of the architecture type, "arm", "arm64", "x86", or "x86_64".
+	// Name is the name of the architecture type, "arm", "arm64", "x86", or "x86_64", "loongarch64".
 	Name string
 
 	// Field is the name of the field used in properties that refer to the architecture, e.g. "Arm64".
@@ -147,6 +150,7 @@ var (
 	Arm64  = newArch("arm64", "lib64")
 	X86    = newArch("x86", "lib32")
 	X86_64 = newArch("x86_64", "lib64")
+	Loongarch64  = newArch("loongarch64", "lib64")
 
 	Common = ArchType{
 		Name: COMMON_VARIANT,
@@ -599,7 +603,7 @@ func GetOsSpecificVariantsOfCommonOSVariant(mctx BaseModuleContext) []Module {
 //      target.host.compile_multilib).
 //    - The default multilib passed to InitAndroidArchModule if compile_multilib was not set.
 // Valid multilib values include:
-//    "both": compile for all Targets supported by the OsClass (generally x86_64 and x86, or arm64 and arm).
+//    "both": compile for all Targets supported by the OsClass (generally x86_64 and x86, or arm64 and arm, or loongarch64).
 //    "first": compile for only a single preferred Target supported by the OsClass.  This is generally x86_64 or arm64,
 //        but may be arm for a 32-bit only build.
 //    "32": compile for only a single 32-bit Target supported by the OsClass.
@@ -1541,12 +1545,14 @@ type archConfig struct {
 }
 
 // getNdkAbisConfig returns a list of archConfigs for the ABIs supported by the NDK.
+// XC-TODO: more variants for loongarch64?
 func getNdkAbisConfig() []archConfig {
 	return []archConfig{
 		{"arm", "armv7-a", "", []string{"armeabi-v7a"}},
 		{"arm64", "armv8-a-branchprot", "", []string{"arm64-v8a"}},
 		{"x86", "", "", []string{"x86"}},
 		{"x86_64", "", "", []string{"x86_64"}},
+		{"loongarch64", "", "", []string{"loongarch64"}},
 	}
 }
 
@@ -1557,6 +1563,7 @@ func getAmlAbisConfig() []archConfig {
 		{"arm64", "armv8-a", "", []string{"arm64-v8a"}},
 		{"x86", "", "", []string{"x86"}},
 		{"x86_64", "", "", []string{"x86_64"}},
+		{"loongarch64", "", "", []string{"loongarch64"}},
 	}
 }
 
