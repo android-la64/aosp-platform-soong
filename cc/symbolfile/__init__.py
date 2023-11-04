@@ -37,6 +37,7 @@ Tag = NewType('Tag', str)
 ALL_ARCHITECTURES = (
     Arch('arm'),
     Arch('arm64'),
+    Arch('loongarch64'),
     Arch('x86'),
     Arch('x86_64'),
 )
