@@ -40,11 +40,10 @@ func init() {
 	pctx.StaticVariable("Loongarch64ToolchainRustFlags", strings.Join(Loongarch64RustFlags, " "))
 	pctx.StaticVariable("Loongarch64ToolchainLinkFlags", strings.Join(Loongarch64LinkFlags, " "))
 
-	for variant, rustFlags := range Loongarch64ArchVariantRustFlags {
-		pctx.StaticVariable("Loongarch64"+variant+"VariantRustFlags",
-			strings.Join(rustFlags, " "))
-	}
-
+	//for variant, rustFlags := range Loongarch64ArchVariantRustFlags {
+	//	pctx.StaticVariable("Loongarch64"+variant+"VariantRustFlags",
+	//		strings.Join(rustFlags, " "))
+	//}
 }
 
 type toolchainLoongarch64 struct {

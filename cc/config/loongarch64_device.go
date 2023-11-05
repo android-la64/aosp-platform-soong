@@ -57,8 +57,6 @@ func init() {
 	pctx.SourcePathVariable("Loongarch64GccRoot",
 		"prebuilts/gcc/${HostPrebuiltTag}/loongarch64/loongarch64-linux-android-${loongarch64GccVersion}")
 
-	// pctx.StaticVariable("Loongarch64IncludeFlags", bionicHeaders("loongarch64"))
-
 	/Clang cflags
 	pctx.StaticVariable("Loongarch64ClangCflags", strings.Join(ClangFilterUnknownCflags(loongarch64Cflags), " "))
 	pctx.StaticVariable("Loongarch64ClangCppflags", strings.Join(ClangFilterUnknownCflags(loongarch64Cppflags), " "))

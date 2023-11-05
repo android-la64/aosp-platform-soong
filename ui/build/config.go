@@ -704,7 +704,9 @@ func (c *configImpl) Tapas(ctx Context, apps []string, arch, variant string) {
 	case "arm", "":
 		product = "aosp_arm"
 	case "arm64":
-		product = "aosm_arm64"
+		product = "aosp_arm64"
+	case "loongarch64":
+		product = "aosp_loongarch64"
 	case "x86":
 		product = "aosp_x86"
 	case "x86_64":
