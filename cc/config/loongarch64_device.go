@@ -15,7 +15,7 @@
 package config
 
 import (
-	"fmt"
+	// "fmt"
 	"strings"
 
 	"android/soong/android"
@@ -42,6 +42,8 @@ var (
 		"-Wl,--allow-shlib-undefined",
 	}
 
+	loongarch64Lldflags = []string{ }
+
 	// XC-TODO: more Variants?
 	//loongarch64ClangCpuVariantCflags = map[string][]string{
 	//}
@@ -57,7 +59,7 @@ func init() {
 	pctx.SourcePathVariable("Loongarch64GccRoot",
 		"prebuilts/gcc/${HostPrebuiltTag}/loongarch64/loongarch64-linux-android-${loongarch64GccVersion}")
 
-	/Clang cflags
+	// Clang cflags
 	pctx.StaticVariable("Loongarch64ClangCflags", strings.Join(ClangFilterUnknownCflags(loongarch64Cflags), " "))
 	pctx.StaticVariable("Loongarch64ClangCppflags", strings.Join(ClangFilterUnknownCflags(loongarch64Cppflags), " "))
 	pctx.StaticVariable("Loongarch64ClangLdflags", strings.Join(ClangFilterUnknownCflags(loongarch64Ldflags), " "))
@@ -106,11 +108,11 @@ func (t *toolchainLoongarch64) ClangCppflags() string {
 }
 
 func (t *toolchainLoongarch64) ClangLdflags() string {
-	return "${config.Loongarch64Ldflags}"
+	return "${config.Loongarch64ClangLdflags}"
 }
 
 func (t *toolchainLoongarch64) ClangLldflags() string {
-	return "${config.Loongarch64Lldflags}"
+	return "${config.Loongarch64ClangLldflags}"
 }
 
 func (t *toolchainLoongarch64) ToolchainClangCflags() string {
