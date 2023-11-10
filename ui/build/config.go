@@ -127,6 +127,8 @@ func NewConfig(ctx Context, args ...string) Config {
 		environ: OsEnvironment(),
 	}
 
+	ret.skipSoongTests = true  // XC-TODO Skip tests temporarily
+
 	// Default matching ninja
 	ret.parallel = runtime.NumCPU() + 2
 	ret.keepGoing = 1

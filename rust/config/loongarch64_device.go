@@ -25,13 +25,13 @@ var (
 	Loongarch64ArchFeatureRustFlags = map[string][]string{}
 	Loongarch64LinkFlags            = []string{
 		"-Wl,--icf=safe",
+		"-Wl,-z,max-page-size=4096",
 		"-Wl,-z,separate-code",
 	}
 
-	Loongarch64ArchVariantRustFlags = map[string][]string{
-		// XC-TODO: use loongarch64 cpu
-		// "armv8-2a-dotprod":   []string{},
-	}
+	//Loongarch64ArchVariantRustFlags = map[string][]string{
+  //  "armv8-2a-dotprod":   []string{},  // XC-TODO: use loongarch64 cpu
+  //}
 )
 
 func init() {
@@ -44,6 +44,7 @@ func init() {
 	//	pctx.StaticVariable("Loongarch64"+variant+"VariantRustFlags",
 	//		strings.Join(rustFlags, " "))
 	//}
+
 }
 
 type toolchainLoongarch64 struct {
@@ -56,8 +57,7 @@ func (t *toolchainLoongarch64) RustTriple() string {
 }
 
 func (t *toolchainLoongarch64) ToolchainLinkFlags() string {
-	// Prepend the lld flags from cc_config so we stay in sync with cc
-	return "${config.DeviceGlobalLinkFlags} ${cc_config.Loongarch64Lldflags} ${config.Loongarch64ToolchainLinkFlags}"
+	return "${config.DeviceGlobalLinkFlags} ${config.Loongarch64ToolchainLinkFlags}"
 }
 
 func (t *toolchainLoongarch64) ToolchainRustFlags() string {
@@ -79,7 +79,7 @@ func (toolchainLoongarch64) LibclangRuntimeLibraryArch() string {
 func Loongarch64ToolchainFactory(arch android.Arch) Toolchain {
 	toolchainRustFlags := []string{
 		"${config.Loongarch64ToolchainRustFlags}",
-		"${config.Loongarch64" + "VariantRustFlags}",
+		//"${config.Loongarch64" + arch.ArchVariant + "VariantRustFlags}",
 	}
 
 	toolchainRustFlags = append(toolchainRustFlags, deviceGlobalRustFlags...)
