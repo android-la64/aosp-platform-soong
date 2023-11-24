@@ -148,6 +148,19 @@ var (
 		// http://b/161386391 for -Wno-pointer-to-int-cast
 		"-Wno-pointer-to-int-cast",
 		"-Werror=fortify-source",
+
+		// Added for clang14/15
+		"-Wno-unused-but-set-variable",
+		"-Wno-bitwise-instead-of-logical",
+		"-Wno-unused-but-set-parameter",
+		"-Wno-null-pointer-subtraction",
+		"-Wno-shadow",
+		"-Wno-array-parameter",
+		"-Wno-deprecated-non-prototype",
+		"-Wno-deprecated",
+		"-Wno-unqualified-std-cast-call",
+		"-Wno-enum-conversion",
+		"-Wno-ordered-compare-function-pointers",
 	}
 
 	IllegalFlags = []string{
