@@ -1717,6 +1717,8 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	if c.lto != nil {
 		flags = c.lto.flags(ctx, flags)
 	}
+	// XC-TODO: may need more lto options
+
 	if c.pgo != nil {
 		flags = c.pgo.flags(ctx, flags)
 	}

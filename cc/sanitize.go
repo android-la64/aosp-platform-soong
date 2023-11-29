@@ -33,7 +33,6 @@ var (
 
 	asanCflags = []string{
 		"-fno-omit-frame-pointer",
-		"-fno-experimental-new-pass-manager",
 	}
 	asanLdflags = []string{"-Wl,-u,__asan_preinit"}
 
