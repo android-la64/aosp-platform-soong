@@ -71,6 +71,7 @@ var (
 
 		// XC-TODO: Turn off FMA which got enabled by default in clang-r445002 (http://b/218805949)
 		"-ffp-contract=off",
+		"-mcmodel=large",  // fix relocation out of range error
 	}
 
 	commonGlobalConlyflags = []string{}
