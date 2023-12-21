@@ -42,7 +42,7 @@ var ClangUnknownCflags = sorted([]string{
 	"-Wno-literal-suffix",
 	"-Wno-maybe-uninitialized",
 	"-Wno-old-style-declaration",
-	"-Wno-unused-but-set-parameter",
+	//"-Wno-unused-but-set-parameter",
 	//"-Wno-unused-but-set-variable",
 	"-Wno-unused-local-typedefs",
 	"-Wunused-but-set-parameter",
