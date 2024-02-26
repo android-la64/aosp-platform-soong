@@ -127,6 +127,7 @@ var (
 	_ = pctx.SourcePathVariable("stripPath", "build/soong/scripts/strip.sh")
 	_ = pctx.SourcePathVariable("xzCmd", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/xz")
 	//_ = pctx.SourcePathVariable("createMiniDebugInfo", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/create_minidebuginfo")
+	// XC-TODO workaround: use create_minidebuginfo in OUT_DIR; m create_minidebuginfo
 	_ = pctx.SourcePathVariable("createMiniDebugInfo", "out/host/${config.HostPrebuiltTag}/bin/create_minidebuginfo")
 
 	// Rule to invoke `strip` (to discard symbols and data from object files).
