@@ -38,6 +38,9 @@ module {
         arm64: {
             // Host or device variants with arm64 architecture
         },
+        loongarch64: {
+            // Host or device variants with loongarch64 architecture
+        },
         x86: {
             // Host or device variants with x86 architecture
         },
@@ -90,7 +93,7 @@ module {
 
 // An Arch indicates a single CPU architecture.
 type Arch struct {
-	// The type of the architecture (arm, arm64, x86, or x86_64).
+	// The type of the architecture (arm, arm64, loongarch64, x86, or x86_64).
 	ArchType ArchType
 
 	// The variant of the architecture, for example "armv7-a" or "armv7-a-neon" for arm.
@@ -145,6 +148,7 @@ var (
 
 	Arm     = newArch("arm", "lib32")
 	Arm64   = newArch("arm64", "lib64")
+	Loongarch64 = newArch("loongarch64", "lib64")
 	Riscv64 = newArch("riscv64", "lib64")
 	X86     = newArch("x86", "lib32")
 	X86_64  = newArch("x86_64", "lib64")
@@ -315,7 +319,7 @@ var (
 	Windows = newOsType("windows", Host, true, X86, X86_64)
 	// Android is the OS for target devices that run all of Android, including the Linux kernel
 	// and the Bionic libc runtime.
-	Android = newOsType("android", Device, false, Arm, Arm64, Riscv64, X86, X86_64)
+	Android = newOsType("android", Device, false, Arm, Arm64, Loongarch64, Riscv64, X86, X86_64)
 
 	// CommonOS is a pseudo OSType for a common OS variant, which is OsType agnostic and which
 	// has dependencies on all the OS variants.
@@ -1697,6 +1701,7 @@ func getNdkAbisConfig() []archConfig {
 	return []archConfig{
 		{"arm64", "armv8-a-branchprot", "", []string{"arm64-v8a"}},
 		{"arm", "armv7-a-neon", "", []string{"armeabi-v7a"}},
+		{"loongarch64", "", "", []string{"loongarch64"}},
 		{"riscv64", "", "", []string{"riscv64"}},
 		{"x86_64", "", "", []string{"x86_64"}},
 		{"x86", "", "", []string{"x86"}},
@@ -1708,6 +1713,7 @@ func getAmlAbisConfig() []archConfig {
 	return []archConfig{
 		{"arm64", "armv8-a", "", []string{"arm64-v8a"}},
 		{"arm", "armv7-a-neon", "", []string{"armeabi-v7a"}},
+		{"loongarch64", "", "", []string{"loongarch64"}},
 		{"x86_64", "", "", []string{"x86_64"}},
 		{"x86", "", "", []string{"x86"}},
 	}
