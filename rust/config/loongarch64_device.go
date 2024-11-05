@@ -53,7 +53,7 @@ type toolchainLoongarch64 struct {
 }
 
 func (t *toolchainLoongarch64) RustTriple() string {
-	return "loongarch64-unknown-none"
+	return "loongarch64-linux-android"
 }
 
 func (t *toolchainLoongarch64) ToolchainLinkFlags() string {

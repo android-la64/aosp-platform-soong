@@ -824,7 +824,7 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 		case android.Arm64:
 			deps.Merge(a.archProperties.Arch.Arm64.ApexNativeDependencies)
 		case android.Loongarch64:
-			deps.Merge(a.archProperties.Arch.Riscv64.ApexNativeDependencies)
+			deps.Merge(a.archProperties.Arch.Loongarch64.ApexNativeDependencies)
 		case android.Riscv64:
 			deps.Merge(a.archProperties.Arch.Riscv64.ApexNativeDependencies)
 		case android.X86:
