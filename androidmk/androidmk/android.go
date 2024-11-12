@@ -902,6 +902,7 @@ func skip(ctx variableAssignmentContext) error {
 var propertyPrefixes = []struct{ mk, bp string }{
 	{"arm", "arch.arm"},
 	{"arm64", "arch.arm64"},
+	{"loongarch64", "arch.loongarch64"},
 	{"x86", "arch.x86"},
 	{"x86_64", "arch.x86_64"},
 	{"32", "multilib.lib32"},

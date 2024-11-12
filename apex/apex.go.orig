@@ -324,9 +324,6 @@ type apexArchBundleProperties struct {
 		Arm64 struct {
 			ApexNativeDependencies
 		}
-		Loongarch64 struct {
-			ApexNativeDependencies
-		}
 		Riscv64 struct {
 			ApexNativeDependencies
 		}
@@ -824,8 +821,6 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 			deps.Merge(a.archProperties.Arch.Arm.ApexNativeDependencies)
 		case android.Arm64:
 			deps.Merge(a.archProperties.Arch.Arm64.ApexNativeDependencies)
-		case android.Loongarch64:
-			deps.Merge(a.archProperties.Arch.Riscv64.ApexNativeDependencies)
 		case android.Riscv64:
 			deps.Merge(a.archProperties.Arch.Riscv64.ApexNativeDependencies)
 		case android.X86:
