@@ -28,9 +28,9 @@ func MinApiForArch(ctx android.EarlyModuleContext,
 	switch arch {
 	case android.Arm, android.X86:
 		return ctx.Config().MinSupportedSdkVersion()
-	case android.Arm64, android.X86_64, android.Loongarch64:
+	case android.Arm64, android.X86_64:
 		return android.FirstLp64Version
-	case android.Riscv64:
+	case android.Riscv64, android.Loongarch64:
 		apiLevel, err := android.ApiLevelFromUser(ctx, "VanillaIceCream")
 		if err != nil {
 			panic(err)
