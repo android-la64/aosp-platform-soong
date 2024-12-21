@@ -34,7 +34,7 @@ var (
 	}
 
 	loongarch64Lldflags = append(loongarch64Ldflags,
-		"-Wl,-z,max-page-size=16384",
+		"-Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=4096",
 	)
 
 	loongarch64Cppflags = []string{}
